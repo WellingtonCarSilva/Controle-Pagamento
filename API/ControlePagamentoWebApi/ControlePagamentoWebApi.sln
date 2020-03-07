@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlePagamentoWebApi", "ControlePagamentoWebApi\ControlePagamentoWebApi.csproj", "{82240E16-6098-449B-BF4A-6C392F2E37E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82240E16-6098-449B-BF4A-6C392F2E37E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82240E16-6098-449B-BF4A-6C392F2E37E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82240E16-6098-449B-BF4A-6C392F2E37E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82240E16-6098-449B-BF4A-6C392F2E37E8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {51037C74-0C73-4D96-898C-645BF12A33CB}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,16 @@
+C:\Users\welli\source\Controle-Pagamento\API\ControlePagamentoWebApi\ControlePagamentoWebApi\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\Users\welli\source\Controle-Pagamento\API\ControlePagamentoWebApi\ControlePagamentoWebApi\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Users\welli\source\Controle-Pagamento\API\ControlePagamentoWebApi\ControlePagamentoWebApi\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+C:\Users\welli\source\Controle-Pagamento\API\ControlePagamentoWebApi\ControlePagamentoWebApi\bin\Debug\netcoreapp2.2\ControlePagamentoWebApi.deps.json
+C:\Users\welli\source\Controle-Pagamento\API\ControlePagamentoWebApi\ControlePagamentoWebApi\bin\Debug\netcoreapp2.2\ControlePagamentoWebApi.runtimeconfig.json
+C:\Users\welli\source\Controle-Pagamento\API\ControlePagamentoWebApi\ControlePagamentoWebApi\bin\Debug\netcoreapp2.2\ControlePagamentoWebApi.runtimeconfig.dev.json
+C:\Users\welli\source\Controle-Pagamento\API\ControlePagamentoWebApi\ControlePagamentoWebApi\bin\Debug\netcoreapp2.2\ControlePagamentoWebApi.dll
+C:\Users\welli\source\Controle-Pagamento\API\ControlePagamentoWebApi\ControlePagamentoWebApi\obj\Debug\netcoreapp2.2\ControlePagamentoWebApi.csprojAssemblyReference.cache
+C:\Users\welli\source\Controle-Pagamento\API\ControlePagamentoWebApi\ControlePagamentoWebApi\obj\Debug\netcoreapp2.2\ControlePagamentoWebApi.RazorAssemblyInfo.cache
+C:\Users\welli\source\Controle-Pagamento\API\ControlePagamentoWebApi\ControlePagamentoWebApi\obj\Debug\netcoreapp2.2\ControlePagamentoWebApi.RazorAssemblyInfo.cs
+C:\Users\welli\source\Controle-Pagamento\API\ControlePagamentoWebApi\ControlePagamentoWebApi\obj\Debug\netcoreapp2.2\ControlePagamentoWebApi.AssemblyInfoInputs.cache
+C:\Users\welli\source\Controle-Pagamento\API\ControlePagamentoWebApi\ControlePagamentoWebApi\obj\Debug\netcoreapp2.2\ControlePagamentoWebApi.AssemblyInfo.cs
+C:\Users\welli\source\Controle-Pagamento\API\ControlePagamentoWebApi\ControlePagamentoWebApi\obj\Debug\netcoreapp2.2\ControlePagamentoWebApi.RazorTargetAssemblyInfo.cache
+C:\Users\welli\source\Controle-Pagamento\API\ControlePagamentoWebApi\ControlePagamentoWebApi\bin\Debug\netcoreapp2.2\ControlePagamentoWebApi.pdb
+C:\Users\welli\source\Controle-Pagamento\API\ControlePagamentoWebApi\ControlePagamentoWebApi\obj\Debug\netcoreapp2.2\ControlePagamentoWebApi.dll
+C:\Users\welli\source\Controle-Pagamento\API\ControlePagamentoWebApi\ControlePagamentoWebApi\obj\Debug\netcoreapp2.2\ControlePagamentoWebApi.pdb
