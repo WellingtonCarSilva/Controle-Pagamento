@@ -1,9 +1,13 @@
-﻿using ControlePagamentoWebApi.ExemploSwagger;
+﻿using App.Metrics.Configuration;
+using App.Metrics.Extensions.Reporting.InfluxDB;
+using App.Metrics.Extensions.Reporting.InfluxDB.Client;
+using App.Metrics.Reporting.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 using System;
@@ -24,6 +28,36 @@ namespace ControlePagamentoWebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            #region [metrics]
+
+            var database = "appmetricsdemo";
+            var uri = new Uri("http://127.0.0.1:8086");
+
+            services.AddMetrics(options =>
+            {
+                options.WithGlobalTags((globalTags, info) =>
+                {
+                    globalTags.Add("app", info.EntryAssemblyName);
+                    globalTags.Add("env", "stage");
+                });
+            })
+                .AddHealthChecks()
+                .AddReporting(
+                    factory =>
+                    {
+                        factory.AddInfluxDb(
+                            new InfluxDBReporterSettings
+                            {
+                                InfluxDbSettings = new InfluxDBSettings(database, uri),
+                                ReportInterval = TimeSpan.FromSeconds(5)
+                            });
+                    })
+                .AddMetricsMiddleware(options => options.IgnoredHttpStatusCodes = new[] { 404 });
+
+            services.AddMvc(options => options.AddMetricsResourceFilter());
+
+            #endregion
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1",
@@ -48,10 +82,20 @@ namespace ControlePagamentoWebApi
                 options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
             });
         }
+        
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IApplicationLifetime lifetime)
         {
+            #region [metrics]
+
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            app.UseMetrics();
+            app.UseMetricsReporting(lifetime);
+            app.UseMvc();
+
+            #endregion
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
