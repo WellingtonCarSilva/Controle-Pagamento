@@ -2,7 +2,7 @@
 
 namespace ControlePagamentoWebApi.Dto
 {
-    public class PagamentoDto
+    public class PagamentoPostResult
     {
         public Guid Id { get; set; }
         public double Valor { get; set; }
