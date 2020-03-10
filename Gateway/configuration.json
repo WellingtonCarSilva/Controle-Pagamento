@@ -1,7 +1,7 @@
 {
   "ReRoutes": [
     {
-      "DownstreamPathTemplate": "/",
+      "DownstreamPathTemplate": "/api/v1/pagamentos/",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -9,11 +9,18 @@
           "Port": 5001
         }
       ],
-      "UpstreamPathTemplate": "/pagamentos/",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ]
+      "UpstreamPathTemplate": "/api/v1/pagamentos/",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 2,
+        "Limit": 1
+      }
     },
     {
-      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamPathTemplate": "/api/v1/pagamentos/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -21,9 +28,57 @@
           "Port": 5001
         }
       ],
-      "UpstreamPathTemplate": "/pagamentos/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ]
+      "UpstreamPathTemplate": "/api/v1/pagamentos/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 2,
+        "Limit": 1
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/healthz",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v1/health",
+      "UpstreamHttpMethod": [ "Get" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 2,
+        "Limit": 1
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/swagger/index.html",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v1/api-docs",
+      "UpstreamHttpMethod": [ "Get" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 2,
+        "Limit": 1
+      }
     }
   ],
-  "GlobalConfiguration": {}
+  "GlobalConfiguration": {
+    "DangerousAcceptAnyServerCertificateValidator": true,
+    "SkipSslValidation": true
+  }
 }
