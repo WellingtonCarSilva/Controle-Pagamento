@@ -2,6 +2,7 @@
 using App.Metrics.Extensions.Reporting.InfluxDB;
 using App.Metrics.Extensions.Reporting.InfluxDB.Client;
 using App.Metrics.Reporting.Interfaces;
+using ControlePagamentoWebApi.ExemploSwagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +14,7 @@ using Swashbuckle.AspNetCore.Filters;
 using System;
 using System.IO;
 using System.Reflection;
+using System.Text.Json.Serialization;
 
 namespace ControlePagamentoWebApi
 {
@@ -71,6 +73,9 @@ namespace ControlePagamentoWebApi
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
+
+                c.SchemaFilter<EnumSchemaFilter>();
+
             });
 
             services.AddSwaggerExamplesFromAssemblies(Assembly.GetEntryAssembly());
@@ -81,6 +86,7 @@ namespace ControlePagamentoWebApi
 
                 options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
             });
+
         }
         
 

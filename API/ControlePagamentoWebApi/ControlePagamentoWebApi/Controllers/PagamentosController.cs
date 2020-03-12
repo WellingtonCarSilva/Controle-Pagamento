@@ -30,12 +30,18 @@ namespace ControlePagamentoWebApi.Controllers
         {
             PagamentoGetResult pagamentoDto = new PagamentoGetResult
             {
-                Id = Guid.NewGuid(),
-                DataSolicitacao = DateTimeOffset.Now,
+                Id = id,
+                DataSolicitacao = Mock.DataSolicitacao,
                 DataAprovacao = null,
-                StatusPagamento = StatusPagamentoDto.Processando,
-                Valor = 1234.12
+                StatusPagamento = Mock.StatusPagamento,
+                Valor = Mock.Valor
             };
+
+            if (pagamentoDto.DataSolicitacao.AddSeconds(30) < DateTimeOffset.Now)
+            {
+                pagamentoDto.DataAprovacao = DateTimeOffset.Now;
+                pagamentoDto.StatusPagamento = StatusPagamentoDto.Pago;
+            }
 
             return Ok(pagamentoDto);
         }
@@ -54,18 +60,33 @@ namespace ControlePagamentoWebApi.Controllers
         [ProducesResponseType(typeof(void), 500)]
         [SwaggerResponse(200, Type = typeof(PagamentoPostResult))]
         [SwaggerResponseExample(200, typeof(PagamentoPostExemplo))]
-        public IActionResult RealizaPagamento(PagamentoPost pagamentoPost)
+        public IActionResult RealizaPagamento([FromBody]PagamentoPost pagamentoPost)
         {
-            PagamentoPostResult pagamentoDto = new PagamentoPostResult
+            var pagamentoPostResult = new PagamentoPostResult
             {
                 Id = Guid.NewGuid(),
                 DataSolicitacao = DateTimeOffset.Now,
                 DataAprovacao = null,
-                StatusPagamento = StatusPagamentoDto.Pago,
+                StatusPagamento = StatusPagamentoDto.Processando,
                 Valor = pagamentoPost.Valor
             };
 
-            return Ok(pagamentoDto);
+            Mock.Id = Guid.NewGuid();
+            Mock.DataSolicitacao = DateTimeOffset.Now;
+            Mock.DataAprovacao = null;
+            Mock.StatusPagamento = StatusPagamentoDto.Processando;
+            Mock.Valor = pagamentoPost.Valor;
+
+            return Ok(pagamentoPostResult);
         }
+    }
+
+    public static class Mock
+    {
+        public static Guid Id { get; set; }
+        public static double Valor { get; set; }
+        public static StatusPagamentoDto StatusPagamento { get; set; }
+        public static DateTimeOffset DataSolicitacao { get; set; }
+        public static DateTimeOffset? DataAprovacao { get; set; }
     }
 }
